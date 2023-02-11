@@ -2,20 +2,24 @@ import React from "react";
 import Header from "./components/Header";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Hero from "./components/Hero";
-import MovieCard from "./components/MovieCard";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./components/Home";
+import MovieDetail from "./components/MovieDetail";
+
 
 function App() {
   return (
-    <>
+    <Router>
       <Header />
       <Container maxWidth="lg">
         <Box sx={{ bgcolor: "#f5f5f5"}}>
-        <Hero/>
-        <MovieCard />
+        <Routes>
+        <Route  path="/" element={<Home/>} />
+        <Route  path="/detail" element={<MovieDetail/>} />
+        </Routes>
         </Box>
       </Container>
-    </>
+    </Router>
   );
 }
 
