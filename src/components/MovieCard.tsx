@@ -4,6 +4,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
+import Chip from '@mui/material/Chip';
 import { Container, Grid, Typography, Divider } from "@mui/material";
 import { iCities } from "../common/interfaces";
 
@@ -12,6 +13,29 @@ const StyledContainer = styled(Container)`
   margin-top: 20px;
   padding: 2rem;
 `;
+
+export const StyledCard = styled(Card)(({ theme }) => ({
+    [theme.breakpoints.up("xs")]: {
+      maxWidth: 400,
+      margin: 2,
+    },
+    [theme.breakpoints.up("sm")]: {
+        maxWidth: 400,
+        margin: 2,
+    },
+    [theme.breakpoints.up("md")]: {
+        maxWidth: 300,
+        margin: 2,
+    },
+    [theme.breakpoints.up("lg")]: {
+        maxWidth: 200,
+        margin: 2,
+    },
+    [theme.breakpoints.up("xl")]: {
+        maxWidth: 200,
+        margin: 2,
+    },
+  }));
 
 const cities = [{
   city: "Munich",
@@ -112,7 +136,7 @@ const cities = [{
 
 export function CardMovie({city, imageURL,  price}: iCities) {
   return (
-    <Card sx={{ maxWidth: 200, m:2 }}>
+    <StyledCard>
       <CardHeader title={city} />
       <CardMedia
         component="img"
@@ -122,12 +146,13 @@ export function CardMovie({city, imageURL,  price}: iCities) {
       />
       <CardContent>
         <Grid container justifyContent="right" alignItems="right">
-        <Typography variant="h4" color="primary">
-          €{price} 
+        <Typography variant="h5" color="primary">
+        <Chip label={price} color="success" variant="outlined"/>
+          
           </Typography>
         </Grid>
       </CardContent>
-    </Card>
+    </StyledCard>
   );
 }
 
@@ -143,7 +168,7 @@ export default function MovieCard() {
       <StyledContainer>
         <Grid container direction="row">
         {cities.map((item, index) => (
-            <Grid item xs={6} sm={4} md={3} lg={2} key={index}>
+            <Grid item xs={12} sm={4} md={3} lg={2} key={index}>
             <CardMovie city={item.city} imageURL={item.imageUrl} price={item.price} />
             </Grid>
         ))}
