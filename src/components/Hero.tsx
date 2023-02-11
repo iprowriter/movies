@@ -17,18 +17,12 @@ const StyledBox = styled(Box)`
   background-position: center;
 `;
 
+
+
 export default function Hero() {
   return (
     <StyledBox>
-      <Box
-        component="form"
-        sx={{
-          "& > :not(style)": { m: 1, width: "45ch" },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <Typography variant="h3" sx={{ color: "white", textAlign: "initial" }}>
+      <Typography variant="h3" sx={{ color: "white", textAlign: "initial" }}>
           Welcome
         </Typography>
         <Typography
@@ -46,17 +40,22 @@ export default function Hero() {
         >
           Discover millions of top-ranked movies and TV shows
         </Typography>
+        <Box>
         <TextField
           id="filled-basic"
           label="Search for a Movie or TV show"
           variant="filled"
           fullWidth
+          sx={{
+            backgroundColor: "whitesmoke",
+            my: 5,
+        }}
         />
 
-        <Button variant="contained" sx={{ height: "7ch" }} color="info">
+        <Button variant="contained" sx={{ height: "7ch", width: "45ch" }} color="info" >
           Search Movie
         </Button>
-      </Box>
+        </Box>
     </StyledBox>
   );
 }
