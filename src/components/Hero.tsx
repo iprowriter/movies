@@ -3,6 +3,8 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import { Typography } from "@mui/material";
+import { useState } from "react";
+
 
 const StyledBox = styled(Box)`
   color: darkslategray;
@@ -18,7 +20,16 @@ const StyledBox = styled(Box)`
 
 
 
-export default function Hero() {
+export default function Hero({setGetSearchQueryValue}: any) {
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const handleSearchQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+    setGetSearchQueryValue(searchQuery);
+  }
+
+
+
   return (
     <StyledBox>
       <Typography variant="h3" sx={{ color: "white", textAlign: "initial" }}>
@@ -49,6 +60,8 @@ export default function Hero() {
             backgroundColor: "whitesmoke",
             my: 5,
         }}
+        onChange={handleSearchQuery}
+        value={searchQuery}
         />
 
         <Button variant="contained" sx={{ height: "7ch", width: "35ch" }} color="info" >

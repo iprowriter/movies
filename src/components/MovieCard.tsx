@@ -8,6 +8,7 @@ import { Container, Grid, Typography, Divider } from "@mui/material";
 import useFetch from "./useFetch";
 import { useNavigate } from "react-router-dom";
 import { iCities } from "../common/interfaces";
+import { useState } from "react";
 
 
 const StyledContainer = styled(Container)`
@@ -55,7 +56,6 @@ export function CardMovie({id, original_title, poster_path,  popularity}: any) {
   const navigate = useNavigate();
   const imagePath = "https://image.tmdb.org/t/p/w500/"
   
-  console.log(process.env)
 
   return (
     <StyledCard>
@@ -95,9 +95,20 @@ export function CardMovie({id, original_title, poster_path,  popularity}: any) {
   );
 }
 
-export default function MovieCard() {
-  const {data} = useFetch()
+export default function MovieCard({getSearchQueryValue}: any) {
+  const [url, setUrl] = useState<string>(`https://api.themoviedb.org/4/list/1?api_key=${process.env.REACT_APP_API_Key}`)
+
+  const handleURL = () => {
+    if (getSearchQueryValue.length > 2) {
+      setUrl(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_Key}&query=${getSearchQueryValue}`)
+    }
+  }
+
+
+  const {data} = useFetch(url)
   const movies = data.results;
+
+  console.log("moviecard:", getSearchQueryValue)
   
 
   return (

@@ -3,9 +3,9 @@ import  { useEffect, useState} from "react"
 
 //custom reusable fetch hook for multiple API endpoints
 
-const url = `https://api.themoviedb.org/4/list/1?api_key=${process.env.REACT_APP_API_Key}`
 
-export default function useFetch() {
+
+export default function useFetch(url: string) {
     const [data, setData] = useState<any>([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
