@@ -51,7 +51,7 @@ export default function Hero() {
         }}
         />
 
-        <Button variant="contained" sx={{ height: "7ch", width: "45ch" }} color="info" >
+        <Button variant="contained" sx={{ height: "7ch", width: "35ch" }} color="info" >
           Search Movie
         </Button>
         </Box>

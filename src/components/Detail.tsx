@@ -1,8 +1,11 @@
+import {useState, useEffect} from "react";
 import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import { Container, Typography } from "@mui/material";
+import { useParams } from "react-router-dom";
+import useFetch from "./useFetch";
+
 
 const StyledBox = styled(Box)`
   color: darkslategray;
@@ -23,32 +26,42 @@ const StyledContainer = styled(Container)`
 
 
 
-export default function Hero() {
+export default function MovieDetail(mova: any) {
+   const [movie, setMovie] = useState([]);
+    const id = useParams();
+
+
+
+
   return (
     <Box sx={{ bgcolor: '#f5f5f5', height: '100vh' }}>
-    <StyledBox>
-      <Typography variant="h3" sx={{ color: "white", textAlign: "initial" }}>
-          Welcome
-        </Typography>
-        <Typography
-          variant="h5"
-          sx={{
-            fontSize: {
-              lg: 30,
-              md: 30,
-              sm: 25,
-              xs: 15,
-            }, 
-            color: "white",
-            textAlign: "initial"
-          }}
-        >
-          Discover millions of top-ranked movies and TV shows
-        </Typography>
-    </StyledBox>
-    <Typography variant="h5">
-          Details
-    </Typography>
+    {mova.filter((item: any) => item.id === id).map((item: any, index: any) => (
+        <>
+        <StyledBox>
+        <Typography variant="h3" sx={{ color: "white", textAlign: "initial" }}>
+            {item.original_title}
+          </Typography>
+          <Typography
+            variant="h5"
+            sx={{
+              fontSize: {
+                lg: 30,
+                md: 30,
+                sm: 25,
+                xs: 15,
+              }, 
+              color: "white",
+              textAlign: "initial"
+            }}
+          >
+            Discover millions of top-ranked movies and TV shows
+          </Typography>
+      </StyledBox>
+      <Typography variant="h5">
+            Details
+      </Typography>
+        </>
+    ))}
     </Box>
   );
 }
