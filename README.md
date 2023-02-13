@@ -1,18 +1,18 @@
 # Movie APP
 Thanks for your interest in this project. This project was created to demonstrate skills in React
 
-# VIEW LIVE VERSION
-https://movies-149i.onrender.com/
+
 
 # HOW TO RUN THIS PROJECT
 Please follow the steps below to run this project:
 1. Clone this project from my GitHub public repo using the link: https://github.com/iprowriter/movies.git
-2. Open the folder and edit the `.env_template` file. Make sure you add your API Key string into the file, then edit the ".env_template" file name to look like `.env`
-3. Open your terminal, cd into this project root folder named "movies"
-4. On the root folder on your terminal, run `npm install`
-5. After installation of NPM, run `npm start`
-6. The project will start on http://localhost:3000/
-7. Should you have any confusion about running this project, please send me an email ( I reply fast)
+2. Check if there is “.env” file with API_key string inside. If not, please add it in the next steps.
+3. If there is no ".env" file, Open the folder and edit the `.env_template` file. Make sure you add your API Key string into the file, then edit the ".env_template" file name to look like `.env`
+4. Open your terminal, cd into this project root folder named "movies"
+5. On the root folder on your terminal, run `npm install`
+6. After installation of NPM, run `npm start`
+7. The project will start on http://localhost:3000/
+8. Should you have any confusion about running this project, please send me an email ( I reply fast)
 
 
 # TECHNOLOGIES USED FOR THIS PROJECT
