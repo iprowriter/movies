@@ -134,9 +134,19 @@ export default function MovieCard({ getSearchQueryValue }: any) {
       });
   }, [url]);
 
-  const movies = data.results?.sort(function (a: {popularity:number}, b: {popularity:number}) {
-    return b.popularity - a.popularity;
-  });
+  // const movies = data.results?.sort(function (a: {popularity:number}, b: {popularity:number}) {
+  //   return b.popularity - a.popularity;
+  // });
+
+  const movies = data.results?.sort((a:any ,b:any) =>  {
+    if (a.popularity > b.popularity) {
+      return -1
+    }  else if (a.popularity < b.popularity){
+      return 1
+    } else {
+      return 0
+    }
+  })
 
   return (
     <Box>
