@@ -135,7 +135,7 @@ export default function MovieCard({ getSearchQueryValue }: any) {
   }, [url]);
 
   const movies = data.results?.sort(function (a: {popularity:number}, b: {popularity:number}) {
-    return b.popularity > a.popularity;
+    return b.popularity - a.popularity;
   });
 
   return (

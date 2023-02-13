@@ -1,6 +1,9 @@
 # Movie APP
 Thanks for your interest in this project. This project was created to demonstrate skills in React
 
+# VIEW LIVE VERSION
+https://movies-149i.onrender.com/
+
 # HOW TO RUN THIS PROJECT
 Please follow the steps below to run this project:
 1. Clone this project from my GitHub public repo using the link: https://github.com/iprowriter/movies.git
