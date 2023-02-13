@@ -4,7 +4,6 @@ import { styled } from "@mui/material/styles";
 import { Typography } from "@mui/material";
 import { useState } from "react";
 
-
 const StyledBox = styled(Box)`
   color: darkslategray;
   padding: 2rem;
@@ -17,52 +16,54 @@ const StyledBox = styled(Box)`
   background-position: center;
 `;
 
-
-
-export default function Hero({setGetSearchQueryValue}: any) {
+export default function Hero({ setGetSearchQueryValue }: any) {
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const handleSearchQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
     setGetSearchQueryValue(searchQuery);
-  }
-
-
+  };
 
   return (
     <StyledBox>
       <Typography variant="h3" sx={{ color: "white", textAlign: "initial" }}>
-          Welcome
-        </Typography>
-        <Typography
-          variant="h5"
-          sx={{
-            fontSize: {
-              lg: 30,
-              md: 30,
-              sm: 25,
-              xs: 15,
-            }, 
-            color: "white",
-            textAlign: "initial"
-          }}
-        >
-          Discover millions of top-ranked movies and TV shows
-        </Typography>
-        <Box>
+        Welcome
+      </Typography>
+      <Typography
+        variant="h5"
+        sx={{
+          fontSize: {
+            lg: 30,
+            md: 30,
+            sm: 25,
+            xs: 15,
+          },
+          color: "white",
+          textAlign: "initial",
+        }}
+      >
+        Discover millions of top-ranked movies and TV shows
+      </Typography>
+      <Box>
         <TextField
           id="filled-basic"
           label="Search for a Movie or TV show"
           variant="filled"
           fullWidth
+          color="warning"
+          InputProps={{
+            style: {
+              color: "#3e2723",
+            },
+          }}
           sx={{
             backgroundColor: "whitesmoke",
             my: 5,
-        }}
-        onChange={handleSearchQuery}
-        value={searchQuery}
+          }}
+          onChange={handleSearchQuery}
+          value={searchQuery}
         />
-        </Box>
+      </Box>
     </StyledBox>
   );
 }

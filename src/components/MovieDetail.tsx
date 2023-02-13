@@ -11,6 +11,8 @@ import {
   Grid,
 } from "@mui/material";
 import { useParams } from "react-router-dom";
+import axios from "axios";
+import { links } from "./endpoints";
 
 const StyledBox = styled(Box)`
   color: darkslategray;
@@ -29,20 +31,20 @@ const StyledContainer = styled(Container)`
   padding: 2rem;
 `;
 
+//this component shows the details of a single movie
 export default function MovieDetail() {
   const [movie, setMovie] = useState<any>([]);
   const { id } = useParams();
+  let detailURL = links[2] + id + links[3];
 
   useEffect(() => {
     getMovies();
   });
 
   const getMovies = () => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_Key}`
-    )
-      .then((res) => res.json())
-      .then((data) => setMovie(data));
+    axios.get(detailURL).then((response) => {
+      setMovie(response.data);
+    });
   };
 
   return (
@@ -70,23 +72,21 @@ export default function MovieDetail() {
                     component="img"
                     height="340"
                     image={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                    alt="green iguana"
+                    alt="Movie Poster"
                   />
                 </CardActionArea>
               </Card>
             </Box>
           </Grid>
           <Grid item>
-            <Typography>
+            <Typography color="#3e2723">
               <b>Description:</b> {movie ? movie.overview : ""}
             </Typography>
-            <Typography>
-              {" "}
+            <Typography color="#3e2723">
               <b>Rating:</b> {movie ? movie.popularity : ""}
             </Typography>
-            <Typography>
-              {" "}
-              <b>Budget:</b> {movie ? movie.budget : ""}
+            <Typography color="#3e2723">
+              <b>Budget: </b> ${movie ? movie.budget : ""}
             </Typography>
           </Grid>
         </Grid>

@@ -6,9 +6,10 @@ import { styled } from "@mui/material/styles";
 import Chip from "@mui/material/Chip";
 import { Container, Grid, Typography, Divider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { iCities } from "../common/interfaces";
+import { iMovieData } from "../common/interfaces";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import {links} from "./endpoints"
 
 const StyledContainer = styled(Container)`
   margin-top: 20px;
@@ -21,6 +22,7 @@ export const StyledCard = styled(Card)(({ theme }) => ({
     height: 350,
     marginRight: 0,
     marginBottom: 25,
+    
   },
   [theme.breakpoints.up("sm")]: {
     maxWidth: 400,
@@ -49,17 +51,24 @@ export const StyledCard = styled(Card)(({ theme }) => ({
   },
 }));
 
+//this card was used in the component below:
 export function CardMovie({
   id,
   original_title,
   poster_path,
   popularity,
-}: any) {
+}: iMovieData) {
   const navigate = useNavigate();
   const imagePath = "https://image.tmdb.org/t/p/w500/";
 
   return (
-    <StyledCard>
+    <StyledCard sx={{
+      ':hover': {
+        boxShadow: 20,
+        transition: "transform 0.15s ease-in-out",
+        transform: "scale3d(1.05, 1.05, 1)",
+      },
+    }}>
       <Box
         sx={{ position: "relative", cursor: "pointer" }}
         onClick={() => {
@@ -97,9 +106,10 @@ export function CardMovie({
   );
 }
 
+//this component displays all the movies in the Homepage
 export default function MovieCard({ getSearchQueryValue }: any) {
-  let homeUrl = `https://api.themoviedb.org/4/list/1?api_key=${process.env.REACT_APP_API_Key}`;
-  let searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_Key}&query=${getSearchQueryValue}`
+  let homeUrl = links[0]
+  let searchUrl = links[1]+getSearchQueryValue
   
   const [url, setUrl] = useState<string>(homeUrl);
 
@@ -111,7 +121,6 @@ export default function MovieCard({ getSearchQueryValue }: any) {
 
   const [data, setData] = useState<any>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     setLoading(true);
@@ -120,30 +129,29 @@ export default function MovieCard({ getSearchQueryValue }: any) {
       .then((response) => {
         setData(response.data);
       })
-      .catch((err) => {
-        setError(err);
-      })
       .finally(() => {
         setLoading(false);
       });
   }, [url]);
 
-  const movies = data.results?.sort(function (a: any, b: any) {
+  const movies = data.results?.sort(function (a: {popularity:number}, b: {popularity:number}) {
     return b.popularity > a.popularity;
   });
 
   return (
     <Box>
+      {loading ? <Typography>Loading ...</Typography> :
+      <>
       <StyledContainer>
-        <Typography variant="h5">Trending Movies</Typography>
+        <Typography variant="h5" color="#3e2723">Trending Movies</Typography>
       </StyledContainer>
       <Divider variant="middle" />
       <StyledContainer>
         <Grid container direction="row">
           {movies?.length === 0 ? (
-            <Typography> No movies found</Typography>
+            <Typography color="#3e2723"> No movies found</Typography>
           ) : (
-            movies?.map((item: any) => (
+            movies?.map((item: iMovieData) => (
               <Grid item xs={12} sm={4} md={3} lg={2} key={item.id}>
                 <CardMovie
                   id={item.id}
@@ -156,6 +164,8 @@ export default function MovieCard({ getSearchQueryValue }: any) {
           )}
         </Grid>
       </StyledContainer>
+      </>
+      }
     </Box>
   );
 }

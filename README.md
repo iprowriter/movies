@@ -1,46 +1,47 @@
-# Getting Started with Create React App
+# Movie APP
+Thanks for your interest in this project. This project was created to demonstrate skills in React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# HOW TO RUN THIS PROJECT
+Please follow the steps below to run this project:
+1. Clone this project from my GitHub public repo using the link: https://github.com/iprowriter/movies.git
+2. Open the folder and edit the `.env_template` file. Make sure you add your API Key string into the file, then edit the ".env_template" file name to look like `.env`
+3. Open your terminal, cd into this project root folder named "movies"
+4. On the root folder on your terminal, run `npm install`
+5. After installation of NPM, run `npm start`
+6. The project will start on http://localhost:3000/
+7. Should you have any confusion about running this project, please send me an email ( I reply fast)
 
-## Available Scripts
 
-In the project directory, you can run:
+# TECHNOLOGIES USED FOR THIS PROJECT
+1. React
+2. TypeScript
+3. Material UI (v5)
+4. Styled Component
+5. Axios
+6. React-router-dom
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# PROJECT FUNCTIONALITY DESCRIPTION
+This project allows you to search for various movies. The search bar on the homepage provides a fast live searching. The result is displayed as soon as you begin typing. The movies are then sorted according to their popularity. The most popular movies are displayed first. You can view a single movie detail by clicking on that movie.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# TECHNICAL DECISIONS 
+1. React
+React was an obvious choice because this project was created to demonstrate skills in React. While React is fast, a better option could be NextJS. React being a "Single Page Application" makes it fast but also makes it hard for search engine optimization. If the (potential) owner of this project want his site to do better in search engine, then NextJS which was built on React, is highly recommended.
 
-### `npm test`
+2. TypeScript
+TypeScript was used to enforce type checking. This helps to create an error-free (to a large extent) and production-ready code. The benefit of TypeScript is not fully harnessed in this project. The benefits will become more obvious in the future as this project grows and multiple developers work on it at the same time.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+3. CSS
+MUI was used as CSS framework to save time. MUI works well with React. It is fast and reliable. Moreover, the features lacked by MUI was compensated using Styled Components to add bare-bone CSS into the code. This helps to create a better-user friendly UI.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. State Management
+Using a state manager such as Redux or Context API was considered for this project. However, since there weren't too many states to be managed or variables to be passed, it was not implemented. Adding a Redux to a project of this size maybe considered over-engineering. Unless, the project is expected to grow in the future. Nevertheless, I'm very familiar with the use of Redux in state management and have used it in my other projects such as this one: [Flight Project](https://github.com/iprowriter/flight).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. Fetching Data from API
+Axios was preffered in this project due to personal preference. An alternative could be the React in-built fetch method or React Query.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# PROJECT LICENCE
+You are free to clone, fork or use this project.

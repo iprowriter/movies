@@ -1,25 +1,17 @@
-export interface iFlightData {
+export interface iMovieData {
     id: number,
-    name: string,
-    code: string,
-    destinationCity: string,
-    destinationCountry: string,
-    departureCity: string,
-    departureCountry: string,
-    price: {economy: number, premium: number, business: number},
-    imageUrl: string,
-    flightCode: number,
-    aircraft: string,
-    departureTime: string,
-    arrivalTime: string,
-    departure: string,
-    arrival: string,
-    travelTime?: number 
+    original_title: string,
+    popularity: number,
+    poster_path: string,
 }
 
-export interface iCities {
-    city: string,
-    imageURL: string,
-    price: number
+export interface iMovieDetail {
+    original_title: string,
+    poster_path: string,
+    overview: string,
+    popularity: string,
+    budget: string,
   
   }
+
+  
