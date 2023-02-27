@@ -1,7 +1,8 @@
 # Movie APP
 Thanks for your interest in this project. This project was created to demonstrate skills in React
 
-
+View Live Version (deployed on render):
+https://movies-149i.onrender.com/
 
 # HOW TO RUN THIS PROJECT
 Please follow the steps below to run this project:
